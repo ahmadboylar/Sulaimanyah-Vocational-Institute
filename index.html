@@ -252,6 +252,7 @@ function setFilterStyles(){
     b.className="fb rounded-xl px-4 py-3 text-xs font-bold border "+(on?"bg-[#C5A059] text-slate-950 border-[#C5A059]":"bg-slate-900 text-slate-300 border-slate-800 hover:border-[#C5A059]/50");});
 }
 function openM(s){
+  $$(".profile-voice").forEach(sound=>{sound.pause();sound.currentTime=0});const voiceSound=$("#"+s.key+"ProfileSound");if(voiceSound)voiceSound.play().catch(()=>{});
   cur=S.indexOf(s);
   const t=T[lang], d=s.cls==="Design";
   $("#mPhoto").innerHTML=photo(s); $("#mName").textContent=s.name; $("#mId").textContent=s.id;
@@ -261,7 +262,7 @@ function openM(s){
   $("#modal").classList.replace("hidden","flex"); document.body.style.overflow="hidden"; $("#mx").focus();
 }
 function step(d){openM(S[(cur+d+S.length)%S.length])}
-function closeM(){$("#modal").classList.replace("flex","hidden");document.body.style.overflow="";}
+function closeM(){$$(".profile-voice").forEach(sound=>{sound.pause();sound.currentTime=0});$("#modal").classList.replace("flex","hidden");document.body.style.overflow="";}
 function applyLang(){
   const t=T[lang]; document.documentElement.lang=lang; document.documentElement.dir=lang==="ku"?"rtl":"ltr";
   $$("[data-i]").forEach(e=>e.textContent=t[e.dataset.i]); $$("[data-ip]").forEach(e=>e.placeholder=t[e.dataset.ip]);
@@ -449,7 +450,7 @@ setFilterStyles(); applyLang();
   <div id="musicBody">
     <div class="music-hero">
       <div class="album-art"><div class="disc"><span>♫</span></div><div class="disc-hole"></div></div>
-      <div class="music-info"><span class="eyebrow">YOUR PLAYLIST</span><strong id="musicTitle">Song 01</strong><span>Personal mix • 16 tracks</span></div>
+      <div class="music-info"><span class="eyebrow">YOUR PLAYLIST</span><strong id="musicTitle">Song 01</strong><span>Personal mix • 29 tracks</span></div>
     </div>
     <div class="music-progress">
       <div class="music-times"><span id="musicTime">0:00 / 0:00</span><span id="musicPercent">0%</span></div>
@@ -463,14 +464,18 @@ setFilterStyles(); applyLang();
       <button id="musicRepeat" class="small-control" type="button" title="Repeat">↻</button>
     </div>
     <div class="music-volume"><span>VOL</span><input id="musicVolume" type="range" min="0" max="500" value="100" step="1" aria-label="Volume"><span id="musicVolumeValue">100%</span><span class="vol-icon">◖</span></div>
-    <div class="music-bass"><button id="musicBassToggle" type="button" aria-pressed="true" title="Toggle bass booster">BASS <span>ON</span></button><input id="musicBassLevel" type="range" min="0" max="50" value="50" step="1" aria-label="Bass boost level"><span id="musicBassValue">50 dB</span></div>
+    <div class="music-bass"><button id="musicBassToggle" type="button" aria-pressed="true" title="Toggle bass booster">BASS <span>ON</span></button><input id="musicBassLevel" type="range" min="0" max="50" value="50" step="1" aria-label="Bass boost level"><span id="musicBassValue">50 dB</span></div><div class="music-bass-mode"><label>MODE <select id="musicBassMode" aria-label="Bass style"><option value="deep">Deep sub</option><option value="punch">Punch</option><option value="club">Club</option><option value="balanced">Clean bass</option></select></label></div><div class="music-sub"><label>SUB <input id="musicSubLevel" type="range" min="0" max="18" value="12" step="1" aria-label="Subwoofer bass boost"><span id="musicSubValue">12 dB</span></label></div>
     <div class="music-tone"><label>MID <input id="musicMid" type="range" min="-12" max="12" value="0" step="1" aria-label="Mid tone"><span id="musicMidValue">0 dB</span></label><label>TREBLE <input id="musicTreble" type="range" min="-12" max="12" value="0" step="1" aria-label="Treble tone"><span id="musicTrebleValue">0 dB</span></label></div>
     <div class="music-reverb"><label><input id="musicReverb" type="checkbox" aria-label="Enable reverb"> REVERB</label><input id="musicReverbAmount" type="range" min="0" max="60" value="25" step="1" aria-label="Reverb amount"><span id="musicReverbValue">25%</span></div>
-    <div class="music-extra"><label>EQ <select id="musicEq" aria-label="Equalizer preset"><option value="balanced">Balanced</option><option value="bass">Bass</option><option value="vocal">Vocal</option><option value="bright">Bright</option></select></label><label>SPEED <select id="musicSpeed" aria-label="Playback speed"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option><option value="1.5">1.5×</option></select></label><button id="musicMute" type="button" aria-pressed="false" title="Mute audio">MUTE</button></div>    <div class="playlist-head"><span>PLAYLIST</span><span>16 SONGS</span></div>
+    <div class="music-extra"><label>EQ <select id="musicEq" aria-label="Equalizer preset"><option value="balanced">Balanced</option><option value="bass">Bass</option><option value="vocal">Vocal</option><option value="bright">Bright</option></select></label><label>SPEED <select id="musicSpeed" aria-label="Playback speed"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option><option value="1.5">1.5×</option></select></label><button id="musicMute" type="button" aria-pressed="false" title="Mute audio">MUTE</button></div>    <div class="playlist-head"><span>PLAYLIST</span><span>29 SONGS</span></div>
     <select id="musicSelect" aria-label="Choose song"></select>
     <div id="musicList"></div>
   </div>
   <audio id="musicAudio" preload="auto"></audio>
+<audio id="shakarProfileSound" class="profile-voice" src="music/shakar-profile.mp3" preload="auto"></audio>
+<audio id="sahandProfileSound" class="profile-voice" src="music/sahand-profile.mp3" preload="auto"></audio>
+<audio id="aroProfileSound" class="profile-voice" src="music/aro-profile.mp3" preload="auto"></audio>
+<audio id="hamaProfileSound" class="profile-voice" src="music/hama-profile.mp3" preload="auto"></audio>
 </div>
 <style>
 #danceBg{position:fixed;inset:0;width:100vw;height:100vh;object-fit:cover;z-index:45;pointer-events:none;opacity:0;mix-blend-mode:screen;transition:opacity .45s ease,filter .45s ease;filter:saturate(.8) contrast(1.05)}
@@ -498,7 +503,7 @@ body.music-playing #musicDock .album-art .disc{animation:musicSpin 3.5s linear i
  .card,.card .photo,.card:hover,.card:hover .photo,.news-card,.news-card:hover .news-icon,#students>div>h2 i,.chev,#toast,.music-controls button,.icon-btn,.music-item,body.music-playing #musicDock .album-art .disc{animation:none!important;transition:none!important}
  .card:hover,.card:hover .photo{transform:none!important;filter:none!important}
 }
-.music-tone{display:grid;gap:7px;padding:0 14px 10px}.music-tone label{display:grid;grid-template-columns:44px 1fr 38px;align-items:center;gap:7px;font-size:9px;letter-spacing:.5px;color:rgba(255,255,255,.55)}.music-tone input,.music-reverb input[type=range]{min-width:0;width:100%;accent-color:var(--gold)}.music-tone span,.music-reverb>span{font-size:9px;text-align:right;color:var(--gold2)}.music-reverb{display:flex;align-items:center;gap:8px;padding:0 14px 12px;font-size:9px;color:rgba(255,255,255,.6)}.music-reverb label{white-space:nowrap}.music-reverb input[type=checkbox]{accent-color:var(--gold)}.music-reverb input[type=range]{flex:1}.music-extra{display:flex;align-items:center;gap:9px;padding:0 14px 12px}.music-extra label{display:flex;align-items:center;gap:5px;font-size:9px;letter-spacing:.5px;color:rgba(255,255,255,.55)}.music-extra select,.music-extra button{border:1px solid rgba(255,255,255,.1)!important;border-radius:8px;background:#17171b;color:#fff;padding:6px 8px;font-size:10px!important}.music-extra button[aria-pressed="true"]{color:var(--gold2);border-color:rgba(212,175,55,.45)!important}.music-bass{display:flex;align-items:center;gap:9px;padding:0 14px 12px;font-size:10px;color:rgba(255,255,255,.58)}.music-bass button{min-width:56px;padding:6px 8px;border-radius:9px;background:rgba(255,255,255,.06);font-size:10px;font-weight:800;letter-spacing:.5px}.music-bass button[aria-pressed="true"]{background:rgba(212,175,55,.25);color:var(--gold2)}.music-bass button span{opacity:.65}.music-bass input{flex:1;min-width:0;accent-color:var(--gold)}#musicBassValue{min-width:32px;text-align:right;color:var(--gold2)}#musicDock{max-height:calc(100vh - 24px);display:flex;flex-direction:column}#musicBody{max-height:calc(100vh - 92px);overflow-y:auto;min-height:0}@media(max-width:600px){#musicDock{left:10px;bottom:10px;max-width:calc(100vw - 20px);width:370px;border-radius:21px}.music-hero{padding-top:15px}.music-item{padding:8px 9px}}
+.music-tone{display:grid;gap:7px;padding:0 14px 10px}.music-tone label{display:grid;grid-template-columns:44px 1fr 38px;align-items:center;gap:7px;font-size:9px;letter-spacing:.5px;color:rgba(255,255,255,.55)}.music-tone input,.music-reverb input[type=range]{min-width:0;width:100%;accent-color:var(--gold)}.music-tone span,.music-reverb>span{font-size:9px;text-align:right;color:var(--gold2)}.music-reverb{display:flex;align-items:center;gap:8px;padding:0 14px 12px;font-size:9px;color:rgba(255,255,255,.6)}.music-reverb label{white-space:nowrap}.music-reverb input[type=checkbox]{accent-color:var(--gold)}.music-reverb input[type=range]{flex:1}.music-extra{display:flex;align-items:center;gap:9px;padding:0 14px 12px}.music-extra label{display:flex;align-items:center;gap:5px;font-size:9px;letter-spacing:.5px;color:rgba(255,255,255,.55)}.music-extra select,.music-extra button{border:1px solid rgba(255,255,255,.1)!important;border-radius:8px;background:#17171b;color:#fff;padding:6px 8px;font-size:10px!important}.music-extra button[aria-pressed="true"]{color:var(--gold2);border-color:rgba(212,175,55,.45)!important}.music-bass{display:flex;align-items:center;gap:9px;padding:0 14px 12px;font-size:10px;color:rgba(255,255,255,.58)}.music-bass button{min-width:56px;padding:6px 8px;border-radius:9px;background:rgba(255,255,255,.06);font-size:10px;font-weight:800;letter-spacing:.5px}.music-bass button[aria-pressed="true"]{background:rgba(212,175,55,.25);color:var(--gold2)}.music-bass button span{opacity:.65}.music-bass input{flex:1;min-width:0;accent-color:var(--gold)}#musicBassValue{min-width:32px;text-align:right;color:var(--gold2)}.music-bass-mode{padding:0 14px 10px}.music-bass-mode label{display:flex;align-items:center;justify-content:space-between;gap:9px;font-size:9px;letter-spacing:.5px;color:rgba(255,255,255,.58)}.music-bass-mode select{flex:1;max-width:205px;border:1px solid rgba(255,255,255,.1);border-radius:8px;background:#17171b;color:#fff;padding:7px 9px;font-size:10px}.music-sub{padding:0 14px 12px}.music-sub label{display:grid;grid-template-columns:38px 1fr 42px;align-items:center;gap:8px;font-size:9px;letter-spacing:.5px;color:rgba(255,255,255,.58)}.music-sub input{width:100%;min-width:0;accent-color:var(--gold)}.music-sub span{color:var(--gold2);text-align:right;font-size:9px}#musicDock{max-height:calc(100vh - 24px);display:flex;flex-direction:column}#musicBody{max-height:calc(100vh - 92px);overflow-y:auto;min-height:0}@media(max-width:600px){#musicDock{left:10px;bottom:10px;max-width:calc(100vw - 20px);width:370px;border-radius:21px}.music-hero{padding-top:15px}.music-item{padding:8px 9px}}
 /* Student profile modal polish */
 #modal{backdrop-filter:blur(14px) saturate(.72)}
 #modal>.pop{width:min(100%,30rem);max-height:calc(100dvh - 2rem);overflow-y:auto;padding:1.75rem;border-radius:2rem;border-color:rgba(197,160,89,.42);background:radial-gradient(ellipse at 50% 0,rgba(197,160,89,.13),transparent 48%),linear-gradient(155deg,#121b30 0%,#0a1020 78%);box-shadow:0 30px 90px rgba(0,0,0,.68),inset 0 1px rgba(255,255,255,.05)}
@@ -521,10 +526,11 @@ body.music-playing #musicDock .album-art .disc{animation:musicSpin 3.5s linear i
   const shuffleBtn=document.getElementById('musicShuffle'), repeatBtn=document.getElementById('musicRepeat');
   const seek=document.getElementById('musicSeek'), vol=document.getElementById('musicVolume'), volValue=document.getElementById('musicVolumeValue');
   const bassToggle=document.getElementById('musicBassToggle'), bassLevel=document.getElementById('musicBassLevel'), bassValue=document.getElementById('musicBassValue');
+  const bassMode=document.getElementById('musicBassMode'), subLevel=document.getElementById('musicSubLevel'), subValue=document.getElementById('musicSubValue');
   const eqSelect=document.getElementById('musicEq'), speedSelect=document.getElementById('musicSpeed'), muteBtn=document.getElementById('musicMute');
   const midControl=document.getElementById('musicMid'), trebleControl=document.getElementById('musicTreble'), midValue=document.getElementById('musicMidValue'), trebleValue=document.getElementById('musicTrebleValue');
   const reverbToggle=document.getElementById('musicReverb'), reverbAmount=document.getElementById('musicReverbAmount'), reverbValue=document.getElementById('musicReverbValue');
-  let audioContext=null, bassFilter=null, bassPeak=null, bassMid=null, bassHigh=null, bassCompressor=null, masterGain=null, reverbNode=null, reverbGain=null, audioSource=null, bassEnabled=true, muted=false;
+  let audioContext=null, bassFilter=null, bassPeak=null, subFilter=null, bassMid=null, bassHigh=null, bassCompressor=null, masterGain=null, reverbNode=null, reverbGain=null, audioSource=null, bassEnabled=true, muted=false;
   const title=document.getElementById('musicTitle'), time=document.getElementById('musicTime'), status=document.getElementById('musicStatus');
   const select=document.getElementById('musicSelect'), list=document.getElementById('musicList'), min=document.getElementById('musicMin'), body=document.getElementById('musicBody');
   const songs=[{title:'Song 01',src:'music/track-10.mp3'},{title:'Song 02',src:'music/track-08.mp3'},{title:'Song 03',src:'music/track-07.mp3'},{title:'Song 04',src:'music/track-02.mp3'},{title:'Song 05',src:'music/track-06.mp3'},{title:'Song 06',src:'music/track-03.mp3'},{title:'Song 07',src:'music/track-05.mp3'},{title:'Song 08',src:'music/track-09.mp3'},{title:'Song 09',src:'music/track-01.mp3'},{title:'Song 10',src:'music/track-04.mp3'},
@@ -546,6 +552,7 @@ body.music-playing #musicDock .album-art .disc{animation:musicSpin 3.5s linear i
 {title:'Song 26',src:'music/track-26.mp3'},
 {title:'Song 27',src:'music/track-27.mp3'},
 {title:'Song 28',src:'music/track-28.mp3'},
+{title:'Lemodozy — Rebar Masoy',src:'music/track-29.mp3'},
 ];
   let index=0, shuffle=false, repeat=false, minimized=false;
   audio.volume=1;
@@ -558,6 +565,7 @@ body.music-playing #musicDock .album-art .disc{animation:musicSpin 3.5s linear i
       bassFilter=audioContext.createBiquadFilter();
       bassFilter.type='lowshelf'; bassFilter.frequency.value=100;
       bassPeak=audioContext.createBiquadFilter(); bassPeak.type='peaking'; bassPeak.frequency.value=65; bassPeak.Q.value=.85;
+      subFilter=audioContext.createBiquadFilter(); subFilter.type='lowshelf'; subFilter.frequency.value=38;
       bassMid=audioContext.createBiquadFilter(); bassMid.type='peaking'; bassMid.frequency.value=1000; bassMid.Q.value=.8;
       bassHigh=audioContext.createBiquadFilter(); bassHigh.type='highshelf'; bassHigh.frequency.value=5000;
       reverbNode=audioContext.createConvolver();
@@ -567,7 +575,7 @@ body.music-playing #musicDock .album-art .disc{animation:musicSpin 3.5s linear i
       bassCompressor=audioContext.createDynamicsCompressor(); bassCompressor.threshold.value=-16; bassCompressor.knee.value=18; bassCompressor.ratio.value=5; bassCompressor.attack.value=.004; bassCompressor.release.value=.24;
       masterGain=audioContext.createGain(); masterGain.gain.value=Number(vol.value)/100;
       const limiter=audioContext.createDynamicsCompressor(); limiter.threshold.value=-1; limiter.knee.value=0; limiter.ratio.value=20; limiter.attack.value=.003; limiter.release.value=.15;
-      audioSource.connect(bassFilter); bassFilter.connect(bassPeak); bassPeak.connect(bassMid); bassMid.connect(bassHigh); bassHigh.connect(bassCompressor); bassCompressor.connect(masterGain); masterGain.connect(limiter); limiter.connect(audioContext.destination); masterGain.connect(reverbNode); reverbNode.connect(reverbGain); reverbGain.connect(audioContext.destination);
+      audioSource.connect(bassFilter); bassFilter.connect(bassPeak); bassPeak.connect(subFilter); subFilter.connect(bassMid); bassMid.connect(bassHigh); bassHigh.connect(bassCompressor); bassCompressor.connect(masterGain); masterGain.connect(limiter); limiter.connect(audioContext.destination); masterGain.connect(reverbNode); reverbNode.connect(reverbGain); reverbGain.connect(audioContext.destination);
       updateBass();
       updateReverb();
     }
@@ -575,7 +583,7 @@ body.music-playing #musicDock .album-art .disc{animation:musicSpin 3.5s linear i
   }
   function applyEq(){
     if(!audioContext||!bassMid)return;
-    const presets={balanced:[0,0],bass:[-1,-1],vocal:[3,1],bright:[1,4]};
+    const presets={balanced:[0,0],bass:[-3,-2],vocal:[3,1],bright:[1,4]};
     const [mid,high]=presets[eqSelect.value]||presets.balanced;
     const midDb=mid+Number(midControl.value), highDb=high+Number(trebleControl.value);
     bassMid.gain.setTargetAtTime(midDb,audioContext.currentTime,.04);
@@ -583,15 +591,22 @@ body.music-playing #musicDock .album-art .disc{animation:musicSpin 3.5s linear i
     midValue.textContent=(midDb>0?'+':'')+midDb+' dB'; trebleValue.textContent=(highDb>0?'+':'')+highDb+' dB';
   }
   function updateBass(){
+    const modes={deep:{shelf:78,peak:46,q:.78},punch:{shelf:112,peak:92,q:1.15},club:{shelf:92,peak:58,q:.92},balanced:{shelf:125,peak:82,q:.72}};
+    const mode=modes[bassMode.value]||modes.deep;
     if(bassFilter){
       const boost=bassEnabled?Number(bassLevel.value):0;
+      bassFilter.frequency.setTargetAtTime(mode.shelf,audioContext.currentTime,.04);
+      bassPeak.frequency.setTargetAtTime(mode.peak,audioContext.currentTime,.04);
+      bassPeak.Q.setTargetAtTime(mode.q,audioContext.currentTime,.04);
       bassFilter.gain.setTargetAtTime(boost,audioContext.currentTime,.025);
-      bassPeak.gain.setTargetAtTime(bassEnabled?Math.min(12,boost*.67):0,audioContext.currentTime,.025);
+      bassPeak.gain.setTargetAtTime(bassEnabled?Math.min(18,boost*.48):0,audioContext.currentTime,.025);
+      subFilter.gain.setTargetAtTime(bassEnabled?Number(subLevel.value):0,audioContext.currentTime,.025);
       applyEq();
     }
     bassToggle.setAttribute('aria-pressed',String(bassEnabled));
     bassToggle.querySelector('span').textContent=bassEnabled?'ON':'OFF';
     bassValue.textContent=bassLevel.value+' dB';
+    subValue.textContent=subLevel.value+' dB';
   }
   function fmt(v){if(!isFinite(v))return '0:00';v=Math.max(0,Math.floor(v));return Math.floor(v/60)+':'+String(v%60).padStart(2,'0')}
   function render(){
@@ -618,7 +633,7 @@ body.music-playing #musicDock .album-art .disc{animation:musicSpin 3.5s linear i
     if(masterGain) masterGain.gain.setTargetAtTime(Number(vol.value)/100,audioContext.currentTime,.02);
   };
   bassToggle.onclick=()=>{bassEnabled=!bassEnabled;updateBass()};
-  bassLevel.oninput=updateBass;
+  bassLevel.oninput=updateBass; bassMode.onchange=updateBass; subLevel.oninput=updateBass;
   eqSelect.onchange=applyEq;
   midControl.oninput=applyEq; trebleControl.oninput=applyEq;
   function updateReverb(){
