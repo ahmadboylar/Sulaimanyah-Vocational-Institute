@@ -34,7 +34,7 @@ details[open] .chev{transform:rotate(180deg)}.chev{transition:transform .25s}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 
 /* extra playful news motion */
-.news-card{animation:newsIn .65s cubic-bezier(.2,.8,.2,1) both;transform-origin:center bottom}
+.news-card{animation:newsIn .65s cubic-bezier(.2,.8,.2,1) both;transform-origin:center bottom} .news-avatar{width:2.75rem;height:2.75rem;flex:0 0 2.75rem;object-fit:cover;object-position:center 22%;border:2px solid;border-radius:9999px}.news-avatar-fallback{display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:1rem}
 .news-card:hover .news-icon{animation:newsWiggle .65s ease both}
 @keyframes newsIn{from{opacity:0;transform:translateY(18px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
 @keyframes newsWiggle{0%,100%{transform:rotate(0) scale(1)}35%{transform:rotate(-9deg) scale(1.08)}70%{transform:rotate(8deg) scale(1.04)}}
@@ -388,12 +388,16 @@ const FAQ=[
  {q:{ku:"پێویستە پێشتر ئەزموونم هەبێت؟",en:"Do I need previous experience?"},a:{ku:"نەخێر، لە سەرەتاوە دەستپێدەکەین.",en:"No, we start from the basics."}},
  {q:{ku:"چۆن پەیوەندیتان پێوە بکەم؟",en:"How can I contact you?"},a:{ku:"فۆڕمی پەیوەندی خوارەوە بەکاربهێنە.",en:"Use the contact form below."}}];
 
-function renderNews(){
+function newsAvatar(name,color){
+  const person=S.find(s=>s.name===name),src=person&&PHOTOS[person.key];
+  if(src)return `<img class="news-avatar" src="${src}" alt="${name}" style="border-color:${color}" loading="lazy">`;
+  return `<span class="news-avatar news-avatar-fallback" style="color:${color};background:${color}22" aria-hidden="true">${name.slice(0,1)}</span>`;
+}function renderNews(){
   const slot=Math.floor(Date.now()/600000);
   const start=(slot*3)%NEWS.length;
   const items=[0,1,2].map(i=>NEWS[(start+i)%NEWS.length]);
   $("#newsGrid").innerHTML=items.map((n,i)=>`<article class="news-card rounded-3xl border border-slate-800 bg-slate-900/70 p-6 hover:-translate-y-2 transition-all duration-500" style="border-top:3px solid ${n.c};animation-delay:${i*90}ms">
-   <div class="flex items-start justify-between gap-3"><span class="w-11 h-11 rounded-xl flex items-center justify-center mb-4 news-icon" style="background:${n.c}22;color:${n.c}"><i class="fa-solid ${n.ic}"></i></span><span class="text-[10px] font-bold text-slate-600">${n.student}</span></div>
+   <div class="flex items-start justify-between gap-3"><span class="w-11 h-11 rounded-xl flex items-center justify-center mb-4 news-icon" style="background:${n.c}22;color:${n.c}"><i class="fa-solid ${n.ic}"></i></span><span class="flex items-center gap-2 text-[10px] font-bold text-slate-500">${n.student}${newsAvatar(n.student,n.c)}</span></div>
    <small class="font-bold" style="color:${n.c}">${L(n.tag)}</small><h3 class="font-extrabold text-lg mt-1 mb-2">${L(n.t)}</h3><p class="text-sm text-slate-400 leading-relaxed">${L(n.d)}</p></article>`).join("");
 }
 function renderExtra(){
