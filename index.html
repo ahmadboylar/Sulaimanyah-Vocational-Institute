@@ -133,10 +133,23 @@ details[open] .chev{transform:rotate(180deg)}.chev{transition:transform .25s}
 </section>
 
 <section id="schedule" class="py-14 px-4"><div class="max-w-5xl mx-auto rv">
- <h2 class="sec-t mb-2"><i class="fa-solid fa-calendar-week text-[#C5A059]"></i> <span data-i="nSch">خشتەی وانە</span></h2>
- <p class="text-sm text-slate-400 mb-6" data-i="schNote">نموونەی خشتەی هەفتانە.</p>
- <div class="flex gap-2 mb-5" id="schTabs"></div>
- <div id="schTable" class="overflow-x-auto rounded-2xl border border-slate-800"></div></div></section>
+ <div class="flex flex-wrap items-end justify-between gap-3 mb-6">
+  <div><h2 class="sec-t mb-2"><i class="fa-solid fa-gamepad text-[#C5A059]"></i> <span data-i="nSch">پشووی یاری</span></h2><p class="text-sm text-slate-400" data-i="schNote">کەمێک یاری، کەمێک کوردی؛ چەند خاڵ کۆدەکەیتەوە؟</p></div>
+  <span class="rounded-full border border-amber-400/30 bg-amber-400/10 px-4 py-2 text-xs font-bold text-amber-200"><i class="fa-solid fa-star"></i> <span id="quizScore">0</span> XP</span>
+ </div>
+ <div class="grid lg:grid-cols-[1.25fr_.75fr] gap-5">
+  <div class="rounded-3xl border border-amber-400/30 bg-gradient-to-br from-amber-400/10 via-slate-900 to-slate-950 p-6 sm:p-8">
+   <div class="flex items-center justify-between gap-3 mb-6"><span class="text-xs font-extrabold tracking-widest text-amber-200"><i class="fa-solid fa-language"></i> SORANI WORD SPRINT</span><span id="quizRound" class="rounded-full bg-slate-950/70 px-3 py-1 text-xs text-slate-400"></span></div>
+   <p class="text-xs text-slate-400 mb-2" data-i="quizHint">وەرگێڕانی وشەکە بدۆزەوە</p><h3 id="quizPrompt" class="text-2xl sm:text-3xl font-black mb-6" dir="auto"></h3>
+   <div id="quizOptions" class="grid sm:grid-cols-3 gap-3"></div>
+   <div class="min-h-12 flex items-center justify-between gap-3 mt-4"><p id="quizFeedback" class="text-sm font-bold" aria-live="polite"></p><button id="quizNext" type="button" class="shrink-0 rounded-xl bg-[#C5A059] px-4 py-2.5 text-sm font-extrabold text-slate-950 hover:bg-amber-300"><span data-i="quizNext">وشەی داهاتوو</span> <i class="fa-solid fa-arrow-left"></i></button></div>
+  </div>
+  <div class="rounded-3xl border border-cyan-400/20 bg-slate-900/70 p-6 flex flex-col justify-between">
+   <div><span class="w-12 h-12 rounded-2xl bg-cyan-400/10 text-cyan-300 text-xl grid place-items-center mb-5"><i class="fa-solid fa-dice"></i></span><p class="text-xs font-extrabold tracking-widest text-cyan-200 mb-2" data-i="funTitle">پشوو بە یاری</p><h3 id="funPrompt" class="text-xl font-extrabold leading-relaxed min-h-24" dir="auto"></h3></div>
+   <button id="funNext" type="button" class="mt-6 w-full rounded-xl border border-cyan-300/30 bg-cyan-300/10 px-4 py-3 text-sm font-bold text-cyan-100 hover:bg-cyan-300/20"><i class="fa-solid fa-shuffle"></i> <span data-i="funNext">یارییەکی تر</span></button>
+  </div>
+ </div>
+</div></section>
 
 <section id="admission" class="py-14 px-4 bg-slate-900/60 border-y border-slate-800"><div class="max-w-5xl mx-auto rv">
  <h2 class="sec-t mb-8 text-center" data-i="nAdm">چۆن وەربگیرێیت</h2>
@@ -212,10 +225,10 @@ const S=[
 
 const T={ku:{brand:"پەیمانگەی پیشەیی سلێمانی",brand2:"Sulaimanyah Vocational Institute",nHome:"سەرەکی",nStu:"خوێندکاران",nDep:"بەشەکان",nAbout:"دەربارە",est:"دامەزراوە لە ٢٠٢٤",sub:"ناوەندێکی پیشەیی و ئەکادیمی بۆ پێگەیاندنی خوێندکاران لە بواری تەکنەلۆجیای زانیاری و دیزاین.",btnStu:"تۆماری خوێندکاران",sStu:"خوێندکار",sDep:"بەش",sYear:"ساڵی دامەزراندن",listTitle:"لیستی خوێندکارانی پەیمانگە",ph:"گەڕان بە ناو، پۆل، تەمەن...",fAll:"هەموو",fIT:"ئایتی (IT)",fDes:"دیزاین",eT:"هیچ خوێندکارێک نەدۆزرایەوە",eD:"وشەیەکی تر تاقی بکەرەوە.",d1:"تەکنەلۆجیای زانیاری (IT)",d1d:"بەرنامەسازی، وێب دێڤلۆپمێنت، بنکەدراوە و سیستەمی کۆمپیوتەر.",d2:"بەشی دیزاین (Design)",d2d:"دیزاینی گرافیکی، هونەری بینراو و UI/UX.",aT:"دەربارەی پەیمانگە",aP:"پەیمانگەکەمان لە ٢٠٢٤ دامەزراوە بۆ دابینکردنی خوێندن و لێهاتوویی پیشەیی بۆ خوێندکارانی شاری سلێمانی.",aD:"ئەم ماڵپەڕە لەلایەن ئارش (Arsh) دروستکراوە.",loc:"سلێمانی، هەرێمی کوردستان",age:"تەمەن",cls:"پۆل",note:"تێبینی",yrs:"ساڵ",lbl:"English",more:"زانیاری زیاتر",itB:"ئایتی",desB:"دیزاین"},
 en:{brand:"Sulaimanyah Vocational Institute",brand2:"پەیمانگەی پیشەیی سلێمانی",nHome:"Home",nStu:"Students",nDep:"Departments",nAbout:"About",est:"Established 2069",sub:"A vocational and academic institute training students in information technology and design.",btnStu:"Student roster",sStu:"Students",sDep:"Departments",sYear:"Established",listTitle:"Student roster",ph:"Search by name, class or age...",fAll:"All",fIT:"IT",fDes:"Design",eT:"No students found",eD:"Try a different search.",d1:"Information Technology (IT)",d1d:"Programming, web development, databases and computer systems.",d2:"Design Department",d2d:"Graphic design, visual arts and UI/UX.",aT:"About the institute",aP:"Founded in 2069 to give students in Sulaimanyah practical, job-ready skills.",aD:"This site was built by Arsh.",loc:"Sulaimanyah, Kurdistan Region",age:"Age",cls:"Class",note:"Note",yrs:"yrs",lbl:"کوردی",more:"View profile",itB:"IT",desB:"Design"}};
-Object.assign(T.ku,{nNews:"هەواڵەکان",nSch:"خشتەی وانە",nAdm:"وەرگرتن",nCon:"پەیوەندی",s1:"ڕیزبەندی: ژمارە",s2:"ناو (A-Z)",s3:"تەمەن",rnd:"هەڵبژاردنی هەرەمەکی",schNote:"نموونەی خشتەی هەفتانە (دەتوانیت بیگۆڕیت).",faqT:"پرسیارە باوەکان",conP:"پرسیارت هەیە؟ نامەیەکمان بۆ بنێرە.",hours:"یەکشەممە - پێنجشەممە، ٨:٣٠ی بەیانی - ١٢:٤٥ی پاشنیوەڕۆ",phName:"ناوت",phMsg:"نامەکەت...",send:"ناردن",sent:"نامەکەت ئامادە کرا. سوپاس!",admT:"چۆن وەربگیرێیت"});
-Object.assign(T.en,{nNews:"News",nSch:"Timetable",nAdm:"Admission",nCon:"Contact",s1:"Sort: ID",s2:"Name (A-Z)",s3:"Age",rnd:"Random student",schNote:"Sample weekly timetable (edit it to match yours).",faqT:"Frequently asked questions",conP:"Have a question? Send us a message.",hours:"Sun - Thu, 8:30 AM - 12:45 PM",phName:"Your name",phMsg:"Your message...",send:"Send message",sent:"Message ready. Thank you!",admT:"How to enroll"});
+Object.assign(T.ku,{nNews:"هەواڵەکان",nSch:"پشووی یاری",nAdm:"وەرگرتن",nCon:"پەیوەندی",s1:"ڕیزبەندی: ژمارە",s2:"ناو (A-Z)",s3:"تەمەن",rnd:"هەڵبژاردنی هەرەمەکی",schNote:"کەمێک یاری، کەمێک کوردی؛ چەند خاڵ کۆدەکەیتەوە؟",faqT:"پرسیارە باوەکان",conP:"پرسیارت هەیە؟ نامەیەکمان بۆ بنێرە.",hours:"یەکشەممە - پێنجشەممە، ٨:٣٠ی بەیانی - ١٢:٤٥ی پاشنیوەڕۆ",phName:"ناوت",phMsg:"نامەکەت...",send:"ناردن",sent:"نامەکەت ئامادە کرا. سوپاس!",admT:"چۆن وەربگیرێیت",quizHint:"وەرگێڕانی وشەکە بدۆزەوە",quizNext:"وشەی داهاتوو",funTitle:"پشوو بە یاری",funNext:"یارییەکی تر"});
+Object.assign(T.en,{nNews:"News",nSch:"Game Break",nAdm:"Admission",nCon:"Contact",s1:"Sort: ID",s2:"Name (A-Z)",s3:"Age",rnd:"Random student",schNote:"A quick game, a little Sorani practice—how many points can you score?",faqT:"Frequently asked questions",conP:"Have a question? Send us a message.",hours:"Sun - Thu, 8:30 AM - 12:45 PM",phName:"Your name",phMsg:"Your message...",send:"Send message",sent:"Message ready. Thank you!",admT:"How to enroll",quizHint:"Choose the Sorani translation",quizNext:"Next word",funTitle:"Quick fun break",funNext:"Another challenge"});
 T.ku.nAdm="چۆن وەربگیرێیت";T.en.nAdm="How to enroll";
-let lang="ku",filter="all",cur=0,schCls="IT";
+let lang="ku",filter="all",cur=0;
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 
 function photo(s){
@@ -374,11 +387,29 @@ const NEWS=[
  {student:"Srush",ic:"fa-route",c:"#92400E",tag:{ku:"Srush",en:"Srush"},t:{ku:"Srush دەڵێت من لە دەرەوەم، لەو کاتەدا هێشتا لە کەلاسە 😂",en:"Srush says I'm outside, while still somehow in class 😂"},d:{ku:"GPS ـەکەی پێویستی بە نوێکردنەوەیە.",en:"His GPS may need an update."}}
 ];
 
-const SUB={html:{ku:"HTML و CSS",en:"HTML & CSS"},js:{ku:"JavaScript",en:"JavaScript"},net:{ku:"تۆڕ",en:"Networking"},db:{ku:"بنکەدراوە",en:"Databases"},eng:{ku:"ئینگلیزی",en:"English"},lab:{ku:"تاقیگە",en:"Lab"},gfx:{ku:"دیزاینی گرافیک",en:"Graphic design"},col:{ku:"تیۆری ڕەنگ",en:"Colour theory"},ux:{ku:"UI/UX",en:"UI/UX"},typ:{ku:"تایپۆگرافی",en:"Typography"}};
-const TT={IT:[["html","js","eng"],["js","db","lab"],["net","html","eng"],["db","js","lab"],["lab","net","eng"]],Design:[["gfx","col","eng"],["ux","gfx","lab"],["typ","ux","eng"],["col","typ","lab"],["lab","gfx","eng"]]};
-const DAYS={ku:["یەکشەممە","دووشەممە","سێشەممە","چوارشەممە","پێنجشەممە"],en:["Sunday","Monday","Tuesday","Wednesday","Thursday"]};
-const TIMES=["08:30","10:00","11:30"];
-const STEPS=[
+const QUIZ=[
+ {en:"friend",options:["هاوڕێ","باران","کتێب"],answer:0},{en:"book",options:["دەرگا","کتێب","خۆر"],answer:1},{en:"water",options:["مانگ","ئاو","هاوڕێ"],answer:1},{en:"sun",options:["باران","خۆر","سوپاس"],answer:1},{en:"thank you",options:["خۆش","سوپاس","ئاو"],answer:1},
+ {en:"hello",options:["سڵاو","شەو","نان"],answer:0},{en:"goodbye",options:["سێو","خواحافیز","دایک"],answer:1},{en:"mother",options:["برا","دایک","چای"],answer:1},{en:"father",options:["باوک","پشیلە","ڕۆژ"],answer:0},{en:"brother",options:["خوشک","باوک","برا"],answer:2},
+ {en:"sister",options:["خوشک","سەگ","ماڵ"],answer:0},{en:"house",options:["ماڵ","قاوە","ئەستێرە"],answer:0},{en:"school",options:["سێو","قوتابخانە","سوور"],answer:1},{en:"student",options:["مامۆستا","خوێندکار","پشیلە"],answer:1},{en:"teacher",options:["مامۆستا","باران","ئاو"],answer:0},
+ {en:"apple",options:["سێو","شەو","دڵ"],answer:0},{en:"bread",options:["نان","مانگ","خۆش"],answer:0},{en:"milk",options:["چای","شیر","گەورە"],answer:1},{en:"coffee",options:["قاوە","کتێب","سەوز"],answer:0},{en:"tea",options:["ڕۆژ","چای","برا"],answer:1},
+ {en:"cat",options:["پشیلە","قوتابخانە","باوک"],answer:0},{en:"dog",options:["سەگ","سڵاو","دایک"],answer:0},{en:"rain",options:["باران","دڵخۆش","نان"],answer:0},{en:"moon",options:["مانگ","جوان","ماڵ"],answer:0},{en:"star",options:["ئەستێرە","ئاو","مامۆستا"],answer:0},
+ {en:"day",options:["شەو","ڕۆژ","خوشک"],answer:1},{en:"night",options:["شەو","سوپاس","قوتابخانە"],answer:0},{en:"beautiful",options:["بچووک","جوان","سوور"],answer:1},{en:"big",options:["گەورە","سەوز","چای"],answer:0},{en:"small",options:["سوور","بچووک","ئەستێرە"],answer:1},
+ {en:"red",options:["سوور","سڵاو","دەرگا"],answer:0},{en:"green",options:["سەوز","برا","شیر"],answer:0},{en:"name",options:["ناو","خۆر","باران"],answer:0},{en:"heart",options:["دڵ","ماڵ","سێو"],answer:0},{en:"happy",options:["دڵخۆش","خواحافیز","سەگ"],answer:0},
+ {en:"please",options:["تکایە","پشیلە","چیا"],answer:0},{en:"yes",options:["هێواش","بەڵێ","مێز"],answer:1},{en:"no",options:["نەخێر","گوڵ","نان"],answer:0},{en:"good",options:["خراپ","باش","قەڵەم"],answer:1},{en:"bad",options:["باش","ماسی","خراپ"],answer:2},
+ {en:"door",options:["دەرگا","پەنیر","شار"],answer:0},{en:"window",options:["دار","پەنجەرە","ئۆتۆمبێل"],answer:1},{en:"chair",options:["کورسی","سارد","خوێ"],answer:0},{en:"table",options:["گوڵ","مێز","دڵ"],answer:1},{en:"pen",options:["قەڵەم","گەرم","گوند"],answer:0},
+ {en:"pencil",options:["چیا","پێنووس","شیر"],answer:1},{en:"phone",options:["تەلەفۆن","سێو","سەوز"],answer:0},{en:"computer",options:["کۆمپیوتەر","ڕۆژ","ماسی"],answer:0},{en:"car",options:["ئۆتۆمبێل","هێلکە","برا"],answer:0},{en:"road",options:["ڕێگا","دایک","چای"],answer:0},
+ {en:"city",options:["شار","باران","کتێب"],answer:0},{en:"village",options:["گوند","شەو","دەرگا"],answer:0},{en:"mountain",options:["چیا","سوپاس","قوتابخانە"],answer:0},{en:"tree",options:["دار","ئاو","قەڵەم"],answer:0},{en:"flower",options:["گوڵ","ماڵ","سەگ"],answer:0},
+ {en:"fish",options:["ماسی","دڵخۆش","خۆر"],answer:0},{en:"egg",options:["هێلکە","خوشک","قاوە"],answer:0},{en:"cheese",options:["پەنیر","ئەستێرە","باوک"],answer:0},{en:"salt",options:["خوێ","جوان","سڵاو"],answer:0},{en:"hot",options:["سارد","گەرم","مانگ"],answer:1},
+ {en:"cold",options:["گەرم","کتێب","سارد"],answer:2},{en:"fast",options:["خێرا","بچووک","نان"],answer:0},{en:"slow",options:["سوور","هێواش","مامۆستا"],answer:1}
+];
+const FUN_CHALLENGES=[
+ {ku:"بە خێرایی سێ وشەی کوردی بڵێ!",en:"Say three Sorani words as fast as you can!"},
+ {ku:"وشەی «هاوڕێ» سێ جار بە خێرایی بڵێ 😄",en:"Say “hawre” (friend) three times fast 😄"},
+ {ku:"ناوی سێ شتی ناو پۆل بڵێ، بەبێ وەستان!",en:"Name three things in a classroom without pausing!"},
+ {ku:"وشەیەکی نوێ فێری هاوڕێیەکت بکە.",en:"Teach a friend one new Sorani word."},
+ {ku:"پشوویەکی ١٠ چرکەیی بدە بە مێشکت 🧠",en:"Give your brain a 10-second mini break 🧠"}
+];
+let quizIndex=0,quizScore=0,quizAnswered=false,challengeIndex=0;const STEPS=[
  {ic:"fa-file-pen",t:{ku:"فۆڕم پڕبکەرەوە",en:"Fill in the form"},d:{ku:"زانیارییەکانت تۆمار بکە.",en:"Register your details."}},
  {ic:"fa-folder-open",t:{ku:"بەڵگەنامەکان بنێرە",en:"Submit documents"},d:{ku:"بڕوانامە و وێنە و ناسنامە.",en:"Certificate, photos and ID."}},
  {ic:"fa-comments",t:{ku:"چاوپێکەوتن",en:"Short interview"},d:{ku:"گفتوگۆیەکی کورت لەگەڵ ستاف.",en:"A brief chat with our staff."}},
@@ -401,13 +432,23 @@ function newsAvatar(name,color){
    <div class="flex items-start justify-between gap-3"><span class="w-11 h-11 rounded-xl flex items-center justify-center mb-4 news-icon" style="background:${n.c}22;color:${n.c}"><i class="fa-solid ${n.ic}"></i></span><span class="flex items-center gap-2 text-[10px] font-bold text-slate-500">${n.student}${newsAvatar(n.student,n.c)}</span></div>
    <small class="font-bold" style="color:${n.c}">${L(n.tag)}</small><h3 class="font-extrabold text-lg mt-1 mb-2">${L(n.t)}</h3><p class="text-sm text-slate-400 leading-relaxed">${L(n.d)}</p></article>`).join("");
 }
+function renderQuiz(){
+ const q=QUIZ[quizIndex],correct=lang==="ku"?"ڕاستە! زۆر باش! +1 خاڵ 🌟":"Correct! Nice one! +1 point 🌟",wrong=lang==="ku"?`هەڵەیە—وەڵامی ڕاست «${q.options[q.answer]}» ـە.`:`Not quite—the answer is “${q.options[q.answer]}”.`;
+ $("#quizScore").textContent=quizScore;$("#quizRound").textContent=`${lang==="ku"?"وشە":"WORD"} ${String(quizIndex+1).padStart(2,"0")} / ${QUIZ.length}`;
+ $("#quizPrompt").textContent=L({ku:`وشەی ئینگلیزی «${q.en}» بە کوردی چییە؟`,en:`Which Sorani word means “${q.en}”?`});
+ $("#quizOptions").innerHTML=q.options.map((option,i)=>`<button type="button" data-answer="${i}" class="rounded-2xl border border-slate-700 bg-slate-950/80 px-3 py-4 text-lg font-extrabold text-slate-100 hover:border-amber-300/60 disabled:cursor-default">${option}</button>`).join("");
+ $("#quizFeedback").textContent=quizAnswered?(window.quizLastAnswer===q.answer?correct:wrong):"";$("#quizFeedback").className="text-sm font-bold "+(quizAnswered?(window.quizLastAnswer===q.answer?"text-emerald-300":"text-amber-200"):"");
+ $$("#quizOptions [data-answer]").forEach(b=>{const i=Number(b.dataset.answer);b.disabled=quizAnswered;b.onclick=()=>{if(quizAnswered)return;quizAnswered=true;window.quizLastAnswer=i;if(i===q.answer)quizScore++;renderQuiz()};if(quizAnswered&&i===q.answer)b.className+=" border-emerald-400 bg-emerald-400/10 text-emerald-200";else if(quizAnswered&&i===window.quizLastAnswer)b.className+=" border-rose-400 bg-rose-400/10 text-rose-200"});
+ $("#quizNext").onclick=()=>{quizIndex=(quizIndex+1)%QUIZ.length;quizAnswered=false;window.quizLastAnswer=null;renderQuiz()};
+}
+function renderChallenge(){
+ $("#funPrompt").textContent=L(FUN_CHALLENGES[challengeIndex]);
+ $("#funNext").onclick=()=>{challengeIndex=(challengeIndex+1+Math.floor(Math.random()*(FUN_CHALLENGES.length-1)))%FUN_CHALLENGES.length;renderChallenge()};
+}
 function renderExtra(){
   renderNews();
-  $("#schTabs").innerHTML=["IT","Design"].map(k=>`<button data-c="${k}" class="rounded-xl px-5 py-2.5 text-sm font-bold border ${k===schCls?"bg-[#C5A059] text-slate-950 border-[#C5A059]":"bg-slate-900 border-slate-800 text-slate-300"}">${k==="IT"?"IT":L({ku:"دیزاین",en:"Design"})}</button>`).join("");
-  $$("#schTabs button").forEach(b=>b.onclick=()=>{schCls=b.dataset.c;renderExtra()});
-  const today=new Date().getDay(); // 0 = Sunday
-  $("#schTable").innerHTML=`<table class="w-full text-sm min-w-[480px]"><thead><tr class="bg-slate-900 text-slate-400"><th class="p-3 text-start">${L({ku:"ڕۆژ",en:"Day"})}</th>${TIMES.map(t=>`<th class="p-3" dir="ltr">${t}</th>`).join("")}</tr></thead><tbody>`+
-   TT[schCls].map((r,d)=>`<tr class="border-t border-slate-800 ${d===today?"bg-[#C5A059]/10":""}"><td class="p-3 font-bold">${DAYS[lang][d]}${d===today?` <i class="fa-solid fa-circle text-[8px] text-emerald-400"></i>`:""}</td>${r.map(s=>`<td class="p-3 text-center ${s==="lab"?"text-cyan-300":""}">${L(SUB[s])}</td>`).join("")}</tr>`).join("")+`</tbody></table>`;
+  renderQuiz();renderChallenge();
+  
   $("#steps").innerHTML=STEPS.map((s,i)=>`<li class="rounded-3xl border border-slate-800 bg-slate-950 p-5 relative"><span class="absolute top-4 end-4 text-3xl font-black text-slate-800">${i+1}</span>
    <span class="w-11 h-11 rounded-xl bg-[#C5A059]/15 text-[#C5A059] flex items-center justify-center mb-3"><i class="fa-solid ${s.ic}"></i></span><h4 class="font-bold mb-1">${L(s.t)}</h4><p class="text-xs text-slate-400">${L(s.d)}</p></li>`).join("");
   $("#faq").innerHTML=FAQ.map(f=>`<details class="rounded-2xl border border-slate-800 bg-slate-950 px-5 py-4"><summary class="flex justify-between items-center font-bold text-sm">${L(f.q)}<i class="fa-solid fa-chevron-down chev text-[#C5A059] text-xs"></i></summary><p class="text-sm text-slate-400 mt-3 leading-relaxed">${L(f.a)}</p></details>`).join("");
