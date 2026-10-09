@@ -104,6 +104,9 @@ section:not(#home){padding-block:clamp(3.25rem,6vw,5.25rem)}
 #about .max-w-3xl{padding:clamp(1.5rem,5vw,3rem);border:1px solid rgba(148,163,184,.12);border-radius:1.75rem;background:linear-gradient(145deg,rgba(17,24,39,.56),rgba(7,11,18,.3))}
 #contact ul li{min-height:50px}
 #contact a[href^="tel:"]{padding:.25rem .6rem .25rem .25rem;border-radius:.9rem;background:rgba(255,255,255,.025)}
+.social-link{min-height:82px;transition:transform .18s,border-color .18s,background .18s,box-shadow .18s}
+.social-link:hover{transform:translateY(-2px);background:linear-gradient(110deg,rgba(17,24,39,.98),rgba(15,23,42,.88));box-shadow:0 12px 30px rgba(0,0,0,.2)}
+.social-icon{width:48px;height:48px;flex:0 0 48px;display:grid;place-items:center;border-radius:15px;font-size:1.2rem}
 #cf{box-shadow:0 18px 45px rgba(0,0,0,.2)}
 #cf button{min-height:48px;transition:filter .18s,transform .18s}
 #cf button:hover{filter:brightness(1.08);transform:translateY(-1px)}
@@ -118,7 +121,7 @@ footer{background:rgba(3,7,18,.35)}
  #grid .card{padding:1rem}
  #contact form{padding:1rem}
 }
-@media(prefers-reduced-motion:reduce){:root{scroll-behavior:auto}#home>div.flex a:hover,#home .grid.grid-cols-3>div:hover,#grid .card:hover,#quizOptions button:hover,#quizNext:hover,#funNext:hover,#cf button:hover{transform:none}}
+@media(prefers-reduced-motion:reduce){:root{scroll-behavior:auto}#home>div.flex a:hover,#home .grid.grid-cols-3>div:hover,#grid .card:hover,#quizOptions button:hover,#quizNext:hover,#funNext:hover,#cf button:hover,.social-link:hover{transform:none}}
 </style>
 </head>
 <body>
@@ -160,7 +163,7 @@ footer{background:rgba(3,7,18,.35)}
  </div>
  <div id="studentGate" class="relative z-10 max-w-xl mx-auto mt-8 rounded-3xl border border-[#C5A059]/40 bg-slate-900/90 p-5 text-start shadow-xl sm:p-6">
   <div class="flex items-start gap-4"><span class="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-[#C5A059]/15 text-xl text-[#C5A059]"><i class="fa-solid fa-lock"></i></span><div class="min-w-0 flex-1"><h3 class="text-lg font-bold" data-gate-title>Student profiles are locked</h3><p class="mt-1 text-sm text-slate-400" data-gate-copy>Enter the access code to view student names and photos. The rest of the website is still available.</p>
-   <form id="studentGateForm" class="mt-4 flex flex-col gap-3 sm:flex-row"><input id="studentGateCode" type="password" autocomplete="off" class="min-w-0 flex-1 rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 text-sm" placeholder="Access code" aria-label="Access code"><button class="rounded-xl bg-[#C5A059] px-5 py-3 text-sm font-bold text-slate-950" type="submit" data-gate-button>Unlock student profiles</button></form><p id="studentGateError" class="mt-3 hidden text-sm font-semibold text-rose-300" role="alert" data-gate-error>That code is incorrect. Try again.</p>
+   <form id="studentGateForm" class="mt-4 flex flex-col gap-3 sm:flex-row"><input id="studentGateCode" type="password" autocomplete="off" class="min-w-0 flex-1 rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 text-sm" placeholder="Access code" aria-label="Access code"><button class="rounded-xl bg-[#C5A059] px-5 py-3 text-sm font-bold text-slate-950" type="submit" data-gate-button>Unlock student profiles</button></form><p id="studentGateError" class="mt-3 hidden text-sm font-semibold text-rose-300" role="alert" data-gate-error><span id="studentGateErrorMessage">That code is incorrect. Message me:</span> <a class="underline underline-offset-2 hover:text-rose-200" href="https://www.snapchat.com/add/a.arshhh96" target="_blank" rel="noopener noreferrer">Snapchat: a.arshhh96</a> <span aria-hidden="true">·</span> <a class="underline underline-offset-2 hover:text-rose-200" href="https://www.tiktok.com/@ix.arshhh96" target="_blank" rel="noopener noreferrer">TikTok: @ix.arshhh96</a></p>
   </div></div>
  </div>
  <div class="grid grid-cols-3 gap-3 max-w-xl mx-auto mt-12 text-center">
@@ -257,21 +260,23 @@ footer{background:rgba(3,7,18,.35)}
  </div>
 </section>
 
-<section id="contact" class="py-14 px-4 border-t border-slate-800"><div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-8 rv">
- <div>
-  <h2 class="sec-t mb-4"><i class="fa-solid fa-envelope text-[#C5A059]"></i> <span data-i="nCon">پەیوەندی</span></h2>
-  <p class="text-slate-400 text-sm mb-6" data-i="conP">پرسیارت هەیە؟ نامەیەکمان بۆ بنێرە.</p>
-  <ul class="space-y-3 text-sm">
-   <li class="flex gap-3 items-center"><span class="w-10 h-10 rounded-xl bg-[#C5A059]/15 text-[#C5A059] flex items-center justify-center"><i class="fa-solid fa-location-dot"></i></span><span data-i="loc">سلێمانی</span></li>
-   <li class="flex gap-3 items-center"><a href="tel:+9647700394675" aria-label="Call 0770 039 4675" class="flex items-center gap-3 rounded-xl hover:text-[#C5A059] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#C5A059]"><span class="w-10 h-10 rounded-xl bg-[#C5A059]/15 text-[#C5A059] flex items-center justify-center"><i class="fa-solid fa-phone"></i></span><span dir="ltr">0770 039 4675</span></a></li>
-   <li class="flex gap-3 items-center"><span class="w-10 h-10 rounded-xl bg-[#C5A059]/15 text-[#C5A059] flex items-center justify-center"><i class="fa-solid fa-clock"></i></span><span data-i="hours">یەکشەممە - پێنجشەممە، ٨:٣٠ - ١٤:٠٠</span></li>
-  </ul>
+<section id="contact" class="py-14 px-4 border-t border-slate-800"><div class="max-w-5xl mx-auto grid md:grid-cols-[.9fr_1.1fr] gap-6 rv">
+ <div class="rounded-3xl border border-slate-800 bg-slate-900/70 p-6 sm:p-8">
+  <div class="flex items-center gap-4 mb-6"><img src="arsh-profile.webp" alt="Arsh" loading="lazy" class="h-16 w-16 shrink-0 rounded-2xl border border-[#C5A059]/40 object-cover object-center shadow-lg"><div><p class="text-xs font-bold uppercase tracking-[.2em] text-[#C5A059]">ABOUT ME</p><h2 class="text-2xl font-extrabold">Arsh</h2></div></div>
+  <p class="text-slate-300 leading-relaxed" data-i="socialIntro">ئەم ماڵپەڕەم دروست کردووە. لە ڕێگای خوارەوە پەیوەندیم پێوە بکە.</p>
  </div>
- <form id="cf" class="rounded-3xl border border-slate-800 bg-slate-900/70 p-6 space-y-3">
-  <input required id="cn" data-ip="phName" class="w-full rounded-xl bg-slate-950 border border-slate-700 px-4 py-3 text-sm focus:border-[#C5A059]">
-  <textarea required id="cm" rows="4" data-ip="phMsg" class="w-full rounded-xl bg-slate-950 border border-slate-700 px-4 py-3 text-sm focus:border-[#C5A059]"></textarea>
-  <button class="w-full bg-[#C5A059] hover:bg-[#B08B45] text-slate-950 font-bold py-3 rounded-xl text-sm"><i class="fa-solid fa-paper-plane"></i> <span data-i="send">ناردن</span></button>
- </form></div></section>
+ <div class="grid gap-3">
+  <a href="tel:+9647700394675" class="social-link group flex items-center gap-4 rounded-2xl border border-slate-800 bg-slate-900/70 p-4 sm:p-5 hover:border-[#C5A059]/60">
+   <span class="social-icon bg-[#C5A059]/10 text-[#C5A059]"><i class="fa-solid fa-phone"></i></span><span class="min-w-0 flex-1"><small class="block text-xs text-slate-400" data-i="callLabel">Call me</small><b dir="ltr" class="block truncate text-base">0770 039 4675</b></span><i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-500"></i>
+  </a>
+  <a href="https://www.snapchat.com/add/a.arshhh96" target="_blank" rel="noopener noreferrer" class="social-link group flex items-center gap-4 rounded-2xl border border-slate-800 bg-slate-900/70 p-4 sm:p-5 hover:border-yellow-300/50">
+   <span class="social-icon bg-yellow-300/10 text-yellow-300"><i class="fa-brands fa-snapchat"></i></span><span class="min-w-0 flex-1"><small class="block text-xs text-slate-400">Snapchat</small><b dir="ltr" class="block truncate text-base">a.arshhh96</b></span><i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-500"></i>
+  </a>
+  <a href="https://www.tiktok.com/@ix.arshhh96" target="_blank" rel="noopener noreferrer" class="social-link group flex items-center gap-4 rounded-2xl border border-slate-800 bg-slate-900/70 p-4 sm:p-5 hover:border-cyan-300/50">
+   <span class="social-icon bg-cyan-300/10 text-cyan-200"><i class="fa-brands fa-tiktok"></i></span><span class="min-w-0 flex-1"><small class="block text-xs text-slate-400">TikTok</small><b dir="ltr" class="block truncate text-base">@ix.arshhh96</b></span><i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-500"></i>
+  </a>
+ </div>
+</div></section>
 
 <footer class="border-t border-slate-900 py-8 text-center text-xs text-slate-500">© 2069 Sulaimanyah Vocational Institute · <span class="text-amber-300 font-bold">Created by Arsh</span></footer>
 
@@ -317,6 +322,8 @@ const T={ku:{brand:"پەیمانگەی پیشەیی سلێمانی",brand2:"Sula
 en:{brand:"Sulaimanyah Vocational Institute",brand2:"پەیمانگەی پیشەیی سلێمانی",nHome:"Home",nStu:"Students",nDep:"Departments",nAbout:"About",est:"Established 2026",sub:"A vocational and academic institute training students in information technology and design.",btnStu:"Student roster",sStu:"Students",sDep:"Departments",sYear:"Established",listTitle:"Student roster",ph:"Search by name, class or age...",fAll:"All",fIT:"IT",fDes:"Design",eT:"No students found",eD:"Try a different search.",d1:"Information Technology (IT)",d1d:"Programming, web development, databases and computer systems.",d2:"Design Department",d2d:"Graphic design, visual arts and UI/UX.",aT:"About the institute",aP:"Founded in 2069 to give students in Sulaimanyah practical, job-ready skills.",aD:"This site was built by Arsh.",loc:"Sulaimanyah, Kurdistan Region",age:"Age",cls:"Class",note:"Note",yrs:"yrs",lbl:"کوردی",more:"View profile",itB:"IT",desB:"Design"}};
 Object.assign(T.ku,{nNews:"هەواڵەکان",nSch:"پشووی یاری",nAdm:"وەرگرتن",nCon:"پەیوەندی",s1:"ڕیزبەندی: ژمارە",s2:"ناو (A-Z)",s3:"تەمەن",rnd:"هەڵبژاردنی هەرەمەکی",schNote:"کەمێک یاری، کەمێک کوردی؛ چەند خاڵ کۆدەکەیتەوە؟",faqT:"پرسیارە باوەکان",conP:"پرسیارت هەیە؟ نامەیەکمان بۆ بنێرە.",hours:"یەکشەممە - پێنجشەممە، ٨:٣٠ی بەیانی - ١٢:٤٥ی پاشنیوەڕۆ",phName:"ناوت",phMsg:"نامەکەت...",send:"ناردن",sent:"نامەکەت ئامادە کرا. سوپاس!",admT:"چۆن وەربگیرێیت",quizHint:"وەرگێڕانی وشەکە بدۆزەوە",quizNext:"وشەی داهاتوو",funTitle:"پشوو بە یاری",funNext:"یارییەکی تر"});
 Object.assign(T.en,{nNews:"News",nSch:"Game Break",nAdm:"Admission",nCon:"Contact",s1:"Sort: ID",s2:"Name (A-Z)",s3:"Age",rnd:"Random student",schNote:"A quick game, a little Sorani practice—how many points can you score?",faqT:"Frequently asked questions",conP:"Have a question? Send us a message.",hours:"Sun - Thu, 8:30 AM - 12:45 PM",phName:"Your name",phMsg:"Your message...",send:"Send message",sent:"Message ready. Thank you!",admT:"How to enroll",quizHint:"Choose the Sorani translation",quizNext:"Next word",funTitle:"Quick fun break",funNext:"Another challenge"});
+Object.assign(T.ku,{nCon:"دەربارەی من",conP:"لە تۆڕە کۆمەڵایەتییەکان پەیوەندیم پێوە بکە.",socialIntro:"ئەم ماڵپەڕەم دروست کردووە. لە ڕێگای خوارەوە پەیوەندیم پێوە بکە.",callLabel:"پەیوەندی تەلەفۆنی"});
+Object.assign(T.en,{nCon:"About me",conP:"Find and contact me on my socials.",socialIntro:"I made this website. You can reach me through the links below.",callLabel:"Call me"});
 T.ku.nAdm="چۆن وەربگیرێیت";T.en.nAdm="How to enroll";
 let lang="ku",filter="all",cur=0;
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
@@ -388,7 +395,7 @@ function applyLang(){
   $("[data-gate-copy]").textContent=lang==="ku"?"کۆدی چوونەژوورەوە بنووسە بۆ بینینی ناو و وێنەی خوێندکاران. بەشەکانی تری ماڵپەڕ بەردەستن.":"Enter the access code to view student names and photos. The rest of the website is still available.";
   $("#studentGateCode").placeholder=lang==="ku"?"کۆدی چوونەژوورەوە":"Access code";
   $("[data-gate-button]").textContent=lang==="ku"?"کردنەوەی پرۆفایلی خوێندکاران":"Unlock student profiles";
-  $("[data-gate-error]").textContent=lang==="ku"?"ئەم کۆدە هەڵەیە. دووبارە هەوڵ بدەرەوە.":"That code is incorrect. Try again.";
+  $("#studentGateErrorMessage").textContent=lang==="ku"?"کۆدەکە هەڵەیە؛ نامەم بۆ بنێرە:":"That code is incorrect. Message me:";
   $("#langLbl").textContent=t.lbl; render(); renderExtra();
 }
 $("#mx").onclick=closeM; $("#modal").onclick=e=>{if(e.target.id==="modal")closeM()};
@@ -570,7 +577,6 @@ function renderExtra(){
   $("#faq").innerHTML=FAQ.map(f=>`<details class="rounded-2xl border border-slate-800 bg-slate-950 px-5 py-4"><summary class="flex justify-between items-center font-bold text-sm">${L(f.q)}<i class="fa-solid fa-chevron-down chev text-[#C5A059] text-xs"></i></summary><p class="text-sm text-slate-400 mt-3 leading-relaxed">${L(f.a)}</p></details>`).join("");
 }
 function toast(m){const t=$("#toast");t.textContent=m;t.classList.remove("opacity-0","translate-y-3");setTimeout(()=>t.classList.add("opacity-0","translate-y-3"),2800)}
-$("#cf").onsubmit=e=>{e.preventDefault();toast(T[lang].sent);e.target.reset()};
 function countUp(el,to){const t0=performance.now();(function f(n){const p=Math.min(1,(n-t0)/1200);el.textContent=Math.round(to*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(f)})(t0)}
 /* drawer, progress bar, reveal-on-scroll */
 $("#drawer").innerHTML=$("#nav").innerHTML.replace(/class="[^"]*"/g,'class="block py-3 border-b border-slate-800 hover:text-[#C5A059]"');
