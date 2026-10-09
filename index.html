@@ -168,7 +168,7 @@ footer{background:rgba(3,7,18,.35)}
  </div>
  <div class="grid grid-cols-3 gap-3 max-w-xl mx-auto mt-12 text-center">
   <div class="rounded-2xl bg-slate-900/80 border border-slate-800 p-4"><b class="text-3xl text-[#C5A059]" id="cnt">12</b><p class="text-xs text-slate-400 mt-1" data-i="sStu">خوێندکار</p></div>
-  <div class="rounded-2xl bg-slate-900/80 border border-slate-800 p-4"><b class="text-3xl text-emerald-400">2</b><p class="text-xs text-slate-400 mt-1" data-i="sDep">بەش</p></div>
+  <div class="rounded-2xl bg-slate-900/80 border border-slate-800 p-4"><b class="text-3xl text-emerald-400">3</b><p class="text-xs text-slate-400 mt-1" data-i="sDep">بەش</p></div>
   <div class="rounded-2xl bg-slate-900/80 border border-slate-800 p-4"><b class="text-3xl text-[#C5A059]">2069</b><p class="text-xs text-slate-400 mt-1" data-i="sYear">ساڵی دامەزراندن</p></div>
  </div>
 </section>
@@ -208,7 +208,7 @@ footer{background:rgba(3,7,18,.35)}
 <section id="departments" class="py-14 px-4 bg-slate-900/60 border-y border-slate-800">
  <div class="max-w-4xl mx-auto">
   <h2 class="text-3xl font-extrabold text-center mb-10" data-i="nDep">بەشەکان</h2>
-  <div class="grid md:grid-cols-2 gap-6">
+  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
    <div class="rounded-3xl border border-slate-800 hover:border-cyan-500/60 bg-slate-950 p-6 transition-colors">
     <div class="flex justify-between items-center mb-5"><span class="w-14 h-14 rounded-2xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-2xl"><i class="fa-solid fa-laptop-code"></i></span><span class="text-xs font-bold text-cyan-400 border border-cyan-500/30 rounded-full px-3 py-1"><span id="itCnt">11</span> <span data-i="sStu">خوێندکار</span></span></div>
     <h3 class="text-xl font-bold mb-2" data-i="d1">تەکنەلۆجیای زانیاری (IT)</h3>
@@ -218,6 +218,11 @@ footer{background:rgba(3,7,18,.35)}
     <div class="flex justify-between items-center mb-5"><span class="w-14 h-14 rounded-2xl bg-pink-500/10 text-pink-400 flex items-center justify-center text-2xl"><i class="fa-solid fa-palette"></i></span><span class="text-xs font-bold text-pink-400 border border-pink-500/30 rounded-full px-3 py-1">1 <span data-i="sStu">خوێندکار</span></span></div>
     <h3 class="text-xl font-bold mb-2" data-i="d2">بەشی دیزاین (Design)</h3>
     <p class="text-sm text-slate-400 leading-relaxed" data-i="d2d">دیزاینی گرافیکی، هونەری بینراو و UI/UX.</p>
+   </div>
+   <div class="rounded-3xl border border-amber-500/40 hover:border-amber-400/80 bg-slate-950 p-6 transition-colors">
+    <div class="flex justify-between items-center mb-5"><span class="w-14 h-14 rounded-2xl bg-amber-400/10 text-amber-300 flex items-center justify-center text-2xl"><i class="fa-solid fa-map-location-dot"></i></span><span class="text-xs font-bold text-amber-300 border border-amber-400/30 rounded-full px-3 py-1" data-i="newDept">نوێ</span></div>
+    <h3 class="text-xl font-bold mb-2" data-i="d3">بەشی گەشتیاری</h3>
+    <p class="text-sm text-slate-400 leading-relaxed" data-i="d3d">گەشتوگوزار، ڕێبەری گەشتیاران، میوانداری و گەشەپێدانی گەشتیاری ناوخۆیی.</p>
    </div>
   </div>
  </div>
@@ -324,6 +329,8 @@ Object.assign(T.ku,{nNews:"هەواڵەکان",nSch:"پشووی یاری",nAdm:"
 Object.assign(T.en,{nNews:"News",nSch:"Game Break",nAdm:"Admission",nCon:"Contact",s1:"Sort: ID",s2:"Name (A-Z)",s3:"Age",rnd:"Random student",schNote:"A quick game, a little Sorani practice—how many points can you score?",faqT:"Frequently asked questions",conP:"Have a question? Send us a message.",hours:"Sun - Thu, 8:30 AM - 12:45 PM",phName:"Your name",phMsg:"Your message...",send:"Send message",sent:"Message ready. Thank you!",admT:"How to enroll",quizHint:"Choose the Sorani translation",quizNext:"Next word",funTitle:"Quick fun break",funNext:"Another challenge"});
 Object.assign(T.ku,{nCon:"دەربارەی من",conP:"لە تۆڕە کۆمەڵایەتییەکان پەیوەندیم پێوە بکە.",socialIntro:"ئەم ماڵپەڕەم دروست کردووە. لە ڕێگای خوارەوە پەیوەندیم پێوە بکە.",callLabel:"پەیوەندی تەلەفۆنی"});
 Object.assign(T.en,{nCon:"About me",conP:"Find and contact me on my socials.",socialIntro:"I made this website. You can reach me through the links below.",callLabel:"Call me"});
+Object.assign(T.ku,{sub:"ناوەندێکی پیشەیی و ئەکادیمی لە بواری تەکنەلۆجیای زانیاری، دیزاین و گەشتیاری.",d3:"بەشی گەشتیاری (Tourism)",d3d:"گەشتوگوزار، ڕێبەری گەشتیاران، میوانداری و گەشەپێدانی گەشتیاری ناوخۆیی.",newDept:"نوێ"});
+Object.assign(T.en,{sub:"A vocational and academic institute offering IT, design, and tourism studies.",d3:"Tourism Department",d3d:"Tourism services, tour guiding, hospitality, and local travel planning.",newDept:"NEW"});
 T.ku.nAdm="چۆن وەربگیرێیت";T.en.nAdm="How to enroll";
 let lang="ku",filter="all",cur=0;
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
