@@ -545,8 +545,8 @@ function newsAvatar(name,color){
   const start=(slot*3)%NEWS.length;
   const items=[0,1,2].map(i=>NEWS[(start+i)%NEWS.length]);
   $("#newsGrid").innerHTML=items.map((n,i)=>`<article class="news-card rounded-3xl border border-slate-800 bg-slate-900/70 p-6 hover:-translate-y-2 transition-all duration-500" style="border-top:3px solid ${n.c};animation-delay:${i*90}ms">
-   <div class="flex items-start justify-between gap-3"><span class="w-11 h-11 rounded-xl flex items-center justify-center mb-4 news-icon" style="background:${n.c}22;color:${n.c}"><i class="fa-solid ${n.ic}"></i></span><span class="flex items-center gap-2 text-[10px] font-bold text-slate-500">${n.student}${newsAvatar(n.student,n.c)}</span></div>
-   <small class="font-bold" style="color:${n.c}">${L(n.tag)}</small><h3 class="font-extrabold text-lg mt-1 mb-2">${L(n.t)}</h3><p class="text-sm text-slate-400 leading-relaxed">${L(n.d)}</p></article>`).join("");
+   <div class="flex items-start justify-between gap-3"><span class="w-11 h-11 rounded-xl flex items-center justify-center mb-4 news-icon" style="background:${n.c}22;color:${n.c}"><i class="fa-solid ${n.ic}"></i></span><span dir="ltr" class="flex items-center gap-2 text-[10px] font-bold text-slate-500">${n.student}${newsAvatar(n.student,n.c)}</span></div>
+   <small class="font-bold" style="color:${n.c}">${lang==="ku"?"کۆمێنتی خوێندکار":"STUDENT MOMENT"}</small><h3 dir="auto" class="font-extrabold text-lg mt-1 mb-2">${L(n.t)}</h3><p dir="auto" class="text-sm text-slate-400 leading-relaxed">${L(n.d)}</p></article>`).join("");
 }
 function renderQuiz(){
  const q=QUIZ[quizIndex],correct=lang==="ku"?"ڕاستە! زۆر باش! +1 خاڵ 🌟":"Correct! Nice one! +1 point 🌟",wrong=lang==="ku"?`هەڵەیە—وەڵامی ڕاست «${q.options[q.answer]}» ـە.`:`Not quite—the answer is “${q.options[q.answer]}”.`;
