@@ -123,49 +123,6 @@ footer{background:rgba(3,7,18,.35)}
 }
 @media(prefers-reduced-motion:reduce){:root{scroll-behavior:auto}#home>div.flex a:hover,#home .grid.grid-cols-3>div:hover,#grid .card:hover,#quizOptions button:hover,#quizNext:hover,#funNext:hover,#cf button:hover,.social-link:hover{transform:none}}
 </style>
-<style id="interfaceRefresh">
-:root{--surface:#0c1422;--surface-raised:#111c2d;--line:rgba(148,163,184,.15)}
-body{background:radial-gradient(ellipse at 10% 5%,color-mix(in srgb,var(--theme-accent) 8%,transparent),transparent 34rem),radial-gradient(ellipse at 92% 44%,rgba(56,189,248,.035),transparent 38rem),#070b12}
-header{background:rgba(7,11,18,.9)!important;border-color:color-mix(in srgb,var(--theme-accent) 24%,transparent)!important;backdrop-filter:blur(18px)}
-header nav{gap:.15rem}
-header nav a{font-size:.84rem}
-#drawer:not(.hidden){display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.5rem;padding:1rem max(1rem,calc((100vw - 42rem)/2)) 1.25rem;background:linear-gradient(160deg,rgba(17,28,45,.98),rgba(7,11,18,.98));box-shadow:0 18px 36px rgba(0,0,0,.32)}
-#drawer a{display:flex;align-items:center;min-height:46px;padding:.65rem .85rem;border:1px solid var(--line);border-radius:.9rem;background:rgba(255,255,255,.025);font-size:.9rem}
-#drawer a:hover,#drawer a:focus-visible{border-color:color-mix(in srgb,var(--theme-accent) 48%,transparent);background:color-mix(in srgb,var(--theme-accent) 9%,transparent)}
-#home{padding-top:clamp(3.5rem,8vw,6.5rem);padding-bottom:clamp(3.5rem,7vw,5.5rem)}
-#home h1{font-size:clamp(2.35rem,6vw,4.6rem);line-height:1.18;max-width:13ch;text-shadow:0 12px 48px color-mix(in srgb,var(--theme-accent) 18%,transparent)}
-#home>[data-i="sub"]{max-width:40rem;color:#c7d0de}
-#studentGate{border-color:color-mix(in srgb,var(--theme-accent) 28%,transparent);border-radius:1.5rem;background:linear-gradient(145deg,rgba(17,28,45,.97),rgba(8,13,23,.98))}
-#home .grid.grid-cols-3{gap:.75rem}
-#home .grid.grid-cols-3>div{border-color:var(--line);border-radius:1.15rem}
-section:not(#home){scroll-margin-top:5.5rem}
-#news,#students,#schedule,#about,#contact{background:transparent}
-#newsGrid article,#grid .card,#departments .grid>div,#schedule .grid>div,#steps>li,#faq details{border-color:var(--line)}
-.sec-t{margin-bottom:1.5rem}
-#departments .grid>div{padding:1.5rem}
-#quizOptions button{border:1px solid var(--line);background:rgba(255,255,255,.035)}
-#quizOptions button:hover{border-color:color-mix(in srgb,var(--theme-accent) 55%,transparent)}
-#musicDock{box-shadow:0 18px 54px rgba(0,0,0,.52)}
-@media(max-width:767px){
- header>div:first-child{gap:.5rem;padding-inline:.7rem}
- header a.flex{gap:.55rem}
- header a>span.leading-tight b{max-width:34vw;font-size:.82rem}
- header a>span.leading-tight small{font-size:.58rem}
- #lang{padding-inline:.7rem}
- #burger{width:2.6rem;height:2.6rem;flex:0 0 2.6rem}
- #themeSelect{width:68px}
- #home{padding-top:3.75rem;padding-bottom:3.25rem}
- #home h1{max-width:12ch}
- #studentGate{margin-top:1.5rem}
- #home .grid.grid-cols-3{margin-top:1.75rem}
- #home .grid.grid-cols-3>div{padding:.8rem .35rem}
- #home .grid.grid-cols-3 p{line-height:1.35}
- section:not(#home){padding-block:3.25rem}
- #departments .grid>div{padding:1.25rem}
- #drawer:not(.hidden){padding-inline:1rem}
-}
-@media(max-width:390px){#drawer:not(.hidden){grid-template-columns:1fr}}
-</style>
 </head>
 <body>
 <div id="prog"></div>
@@ -188,7 +145,7 @@ section:not(#home){scroll-margin-top:5.5rem}
    <span class="hidden sm:flex items-center gap-1.5 text-xs font-bold text-amber-300 border border-[#C5A059]/50 rounded-full px-3 py-1.5"><i class="fa-solid fa-code text-[#C5A059]"></i>Created by Arsh</span>
    <button id="lang" class="flex items-center gap-2 text-xs font-bold text-[#C5A059] border border-[#C5A059]/50 rounded-full px-4 py-1.5 hover:bg-slate-800"><i class="fa-solid fa-globe"></i><span id="langLbl">English</span></button>
    <select id="themeSelect" class="theme-picker" aria-label="Color theme" title="Color theme"><option value="gold">Gold</option><option value="ocean">Ocean</option><option value="forest">Forest</option></select>
-   <button id="burger" aria-label="Menu" aria-controls="drawer" aria-expanded="false" class="lg:hidden w-10 h-10 rounded-full border border-slate-700 hover:bg-slate-800"><i class="fa-solid fa-bars"></i></button>
+   <button id="burger" aria-label="Menu" class="lg:hidden w-10 h-10 rounded-full border border-slate-700 hover:bg-slate-800"><i class="fa-solid fa-bars"></i></button>
   </div>
  </div>
 <div id="drawer" class="hidden lg:hidden px-6 pb-4 border-t border-slate-800 font-semibold"></div>
@@ -368,8 +325,8 @@ const S=[
 
 const T={ku:{brand:"پەیمانگەی پیشەیی سلێمانی",brand2:"Sulaimanyah Vocational Institute",nHome:"سەرەکی",nStu:"خوێندکاران",nDep:"بەشەکان",nAbout:"دەربارە",est:"دامەزراوە لە ٢٠٢٦",sub:"ناوەندێکی پیشەیی و ئەکادیمی بۆ پێگەیاندنی خوێندکاران لە بواری تەکنەلۆجیای زانیاری و دیزاین.",btnStu:"تۆماری خوێندکاران",sStu:"خوێندکار",sDep:"بەش",sYear:"ساڵی دامەزراندن",listTitle:"لیستی خوێندکارانی پەیمانگە",ph:"گەڕان بە ناو، پۆل، تەمەن...",fAll:"هەموو",fIT:"ئایتی (IT)",fDes:"دیزاین",eT:"هیچ خوێندکارێک نەدۆزرایەوە",eD:"وشەیەکی تر تاقی بکەرەوە.",d1:"تەکنەلۆجیای زانیاری (IT)",d1d:"بەرنامەسازی، وێب دێڤلۆپمێنت، بنکەدراوە و سیستەمی کۆمپیوتەر.",d2:"بەشی دیزاین (Design)",d2d:"دیزاینی گرافیکی، هونەری بینراو و UI/UX.",aT:"دەربارەی پەیمانگە",aP:"پەیمانگەکەمان لە ٢٠٢٤ دامەزراوە بۆ دابینکردنی خوێندن و لێهاتوویی پیشەیی بۆ خوێندکارانی شاری سلێمانی.",aD:"ئەم ماڵپەڕە لەلایەن ئارش (Arsh) دروستکراوە.",loc:"سلێمانی، هەرێمی کوردستان",age:"تەمەن",cls:"پۆل",note:"تێبینی",yrs:"ساڵ",lbl:"English",more:"زانیاری زیاتر",itB:"ئایتی",desB:"دیزاین"},
 en:{brand:"Sulaimanyah Vocational Institute",brand2:"پەیمانگەی پیشەیی سلێمانی",nHome:"Home",nStu:"Students",nDep:"Departments",nAbout:"About",est:"Established 2026",sub:"A vocational and academic institute training students in information technology and design.",btnStu:"Student roster",sStu:"Students",sDep:"Departments",sYear:"Established",listTitle:"Student roster",ph:"Search by name, class or age...",fAll:"All",fIT:"IT",fDes:"Design",eT:"No students found",eD:"Try a different search.",d1:"Information Technology (IT)",d1d:"Programming, web development, databases and computer systems.",d2:"Design Department",d2d:"Graphic design, visual arts and UI/UX.",aT:"About the institute",aP:"Founded in 2069 to give students in Sulaimanyah practical, job-ready skills.",aD:"This site was built by Arsh.",loc:"Sulaimanyah, Kurdistan Region",age:"Age",cls:"Class",note:"Note",yrs:"yrs",lbl:"کوردی",more:"View profile",itB:"IT",desB:"Design"}};
-Object.assign(T.ku,{nNews:"هەواڵەکان",nSch:"یاری",nAdm:"وەرگرتن",nCon:"پەیوەندی",s1:"ڕیزبەندی: ژمارە",s2:"ناو (A-Z)",s3:"تەمەن",rnd:"هەڵبژاردنی هەرەمەکی",schNote:"کەمێک یاری، کەمێک کوردی؛ چەند خاڵ کۆدەکەیتەوە؟",faqT:"پرسیارە باوەکان",conP:"پرسیارت هەیە؟ نامەیەکمان بۆ بنێرە.",hours:"یەکشەممە - پێنجشەممە، ٨:٣٠ی بەیانی - ١٢:٤٥ی پاشنیوەڕۆ",phName:"ناوت",phMsg:"نامەکەت...",send:"ناردن",sent:"نامەکەت ئامادە کرا. سوپاس!",admT:"چۆن وەربگیرێیت",quizHint:"وەرگێڕانی وشەکە بدۆزەوە",quizNext:"وشەی داهاتوو",funTitle:"پشوو بە یاری",funNext:"یارییەکی تر"});
-Object.assign(T.en,{nNews:"News",nSch:"Games",nAdm:"Admission",nCon:"Contact",s1:"Sort: ID",s2:"Name (A-Z)",s3:"Age",rnd:"Random student",schNote:"A quick game, a little Sorani practice—how many points can you score?",faqT:"Frequently asked questions",conP:"Have a question? Send us a message.",hours:"Sun - Thu, 8:30 AM - 12:45 PM",phName:"Your name",phMsg:"Your message...",send:"Send message",sent:"Message ready. Thank you!",admT:"How to enroll",quizHint:"Choose the Sorani translation",quizNext:"Next word",funTitle:"Quick fun break",funNext:"Another challenge"});
+Object.assign(T.ku,{nNews:"هەواڵەکان",nSch:"پشووی یاری",nAdm:"وەرگرتن",nCon:"پەیوەندی",s1:"ڕیزبەندی: ژمارە",s2:"ناو (A-Z)",s3:"تەمەن",rnd:"هەڵبژاردنی هەرەمەکی",schNote:"کەمێک یاری، کەمێک کوردی؛ چەند خاڵ کۆدەکەیتەوە؟",faqT:"پرسیارە باوەکان",conP:"پرسیارت هەیە؟ نامەیەکمان بۆ بنێرە.",hours:"یەکشەممە - پێنجشەممە، ٨:٣٠ی بەیانی - ١٢:٤٥ی پاشنیوەڕۆ",phName:"ناوت",phMsg:"نامەکەت...",send:"ناردن",sent:"نامەکەت ئامادە کرا. سوپاس!",admT:"چۆن وەربگیرێیت",quizHint:"وەرگێڕانی وشەکە بدۆزەوە",quizNext:"وشەی داهاتوو",funTitle:"پشوو بە یاری",funNext:"یارییەکی تر"});
+Object.assign(T.en,{nNews:"News",nSch:"Game Break",nAdm:"Admission",nCon:"Contact",s1:"Sort: ID",s2:"Name (A-Z)",s3:"Age",rnd:"Random student",schNote:"A quick game, a little Sorani practice—how many points can you score?",faqT:"Frequently asked questions",conP:"Have a question? Send us a message.",hours:"Sun - Thu, 8:30 AM - 12:45 PM",phName:"Your name",phMsg:"Your message...",send:"Send message",sent:"Message ready. Thank you!",admT:"How to enroll",quizHint:"Choose the Sorani translation",quizNext:"Next word",funTitle:"Quick fun break",funNext:"Another challenge"});
 Object.assign(T.ku,{nCon:"دەربارەی من",conP:"لە تۆڕە کۆمەڵایەتییەکان پەیوەندیم پێوە بکە.",socialIntro:"ئەم ماڵپەڕەم دروست کردووە. لە ڕێگای خوارەوە پەیوەندیم پێوە بکە.",callLabel:"پەیوەندی تەلەفۆنی"});
 Object.assign(T.en,{nCon:"About me",conP:"Find and contact me on my socials.",socialIntro:"I made this website. You can reach me through the links below.",callLabel:"Call me"});
 Object.assign(T.ku,{sub:"ناوەندێکی پیشەیی و ئەکادیمی لە بواری تەکنەلۆجیای زانیاری، دیزاین و گەشتیاری.",d3:"بەشی گەشتیاری (Tourism)",d3d:"گەشتوگوزار، ڕێبەری گەشتیاران، میوانداری و گەشەپێدانی گەشتیاری ناوخۆیی.",newDept:"نوێ"});
@@ -446,7 +403,7 @@ function applyLang(){
   $("#studentGateCode").placeholder=lang==="ku"?"کۆدی چوونەژوورەوە":"Access code";
   $("[data-gate-button]").textContent=lang==="ku"?"کردنەوەی پرۆفایلی خوێندکاران":"Unlock student profiles";
   $("#studentGateErrorMessage").textContent=lang==="ku"?"کۆدەکە هەڵەیە؛ نامەم بۆ بنێرە:":"That code is incorrect. Message me:";
-  $("#langLbl").textContent=t.lbl; $("#drawer").innerHTML=$("#nav").innerHTML.replace(/class="[^"]*"/g,'class="block py-3 border-b border-slate-800 hover:text-[#C5A059]"'); $("#drawer a").forEach(a=>a.onclick=()=>{ $("#drawer").classList.add("hidden");$("#burger").setAttribute("aria-expanded","false");$("#burger i").className="fa-solid fa-bars"; }); render(); renderExtra();
+  $("#langLbl").textContent=t.lbl; render(); renderExtra();
 }
 $("#mx").onclick=closeM; $("#modal").onclick=e=>{if(e.target.id==="modal")closeM()};
 addEventListener("keydown",e=>{if($("#modal").classList.contains("flex")){if(e.key==="Escape")closeM();if(e.key==="ArrowRight")step(lang==="ku"?-1:1);if(e.key==="ArrowLeft")step(lang==="ku"?1:-1)}});
@@ -630,9 +587,8 @@ function toast(m){const t=$("#toast");t.textContent=m;t.classList.remove("opacit
 function countUp(el,to){const t0=performance.now();(function f(n){const p=Math.min(1,(n-t0)/1200);el.textContent=Math.round(to*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(f)})(t0)}
 /* drawer, progress bar, reveal-on-scroll */
 $("#drawer").innerHTML=$("#nav").innerHTML.replace(/class="[^"]*"/g,'class="block py-3 border-b border-slate-800 hover:text-[#C5A059]"');
-$("#burger").onclick=()=>{const open=$("#drawer").classList.toggle("hidden");$("#burger").setAttribute("aria-expanded",String(!open));$("#burger i").className=open?"fa-solid fa-bars":"fa-solid fa-xmark";};
-$("#drawer a").forEach(a=>a.onclick=()=>{ $("#drawer").classList.add("hidden");$("#burger").setAttribute("aria-expanded","false");$("#burger i").className="fa-solid fa-bars"; });
-addEventListener("keydown",e=>{if(e.key==="Escape"&&!$("#drawer").classList.contains("hidden")){ $("#drawer").classList.add("hidden");$("#burger").setAttribute("aria-expanded","false");$("#burger i").className="fa-solid fa-bars";$("#burger").focus(); }});
+$("#burger").onclick=()=>$("#drawer").classList.toggle("hidden");
+$$("#drawer a").forEach(a=>a.onclick=()=>$("#drawer").classList.add("hidden"));
 addEventListener("scroll",()=>{$("#prog").style.width=(scrollY/(document.body.scrollHeight-innerHeight)*100)+"%"});
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.12});
 $$(".rv").forEach(e=>io.observe(e));
