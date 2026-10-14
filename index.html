@@ -446,7 +446,7 @@ function applyLang(){
   $("#studentGateCode").placeholder=lang==="ku"?"کۆدی چوونەژوورەوە":"Access code";
   $("[data-gate-button]").textContent=lang==="ku"?"کردنەوەی پرۆفایلی خوێندکاران":"Unlock student profiles";
   $("#studentGateErrorMessage").textContent=lang==="ku"?"کۆدەکە هەڵەیە؛ نامەم بۆ بنێرە:":"That code is incorrect. Message me:";
-  $("#langLbl").textContent=t.lbl; render(); renderExtra();
+  $("#langLbl").textContent=t.lbl; $("#drawer").innerHTML=$("#nav").innerHTML.replace(/class="[^"]*"/g,'class="block py-3 border-b border-slate-800 hover:text-[#C5A059]"'); $("#drawer a").forEach(a=>a.onclick=()=>{ $("#drawer").classList.add("hidden");$("#burger").setAttribute("aria-expanded","false");$("#burger i").className="fa-solid fa-bars"; }); render(); renderExtra();
 }
 $("#mx").onclick=closeM; $("#modal").onclick=e=>{if(e.target.id==="modal")closeM()};
 addEventListener("keydown",e=>{if($("#modal").classList.contains("flex")){if(e.key==="Escape")closeM();if(e.key==="ArrowRight")step(lang==="ku"?-1:1);if(e.key==="ArrowLeft")step(lang==="ku"?1:-1)}});
